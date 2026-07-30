@@ -2,7 +2,7 @@
 
 import { makePage } from "@keystatic/next/ui/app";
 import { NextUIProvider } from "@keystatic/next/ui";
-import keystaticConfig from "../../../../../keystatic.config";
+import keystaticConfig from "../../../keystatic.config";
 
 export const Keystatic = makePage({
   config: keystaticConfig,

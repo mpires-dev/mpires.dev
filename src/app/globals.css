@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -62,78 +63,78 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   @keyframes skeleton {
   to {
-    background-position: -200% 0;
-    }
+  background-position: -200% 0;
+  }
   }
   @keyframes caret-blink {
   0%, 70%, to {
-    opacity: 1;
-    }
+  opacity: 1;
+  }
   20%, 50% {
-    opacity: 0;
-    }
+  opacity: 0;
+  }
   }
   @keyframes toast-success-odd {
   0% {
-    scale: 1;
-    }
+  scale: 1;
+  }
   30% {
-    scale: 1.025;
-    }
+  scale: 1.025;
+  }
   60% {
-    scale: 0.99;
-    }
+  scale: 0.99;
+  }
   100% {
-    scale: 1;
-    }
+  scale: 1;
+  }
   }
   @keyframes toast-error-odd {
   0% {
-    translate: 0 0;
-    }
+  translate: 0 0;
+  }
   25% {
-    translate: -3px 0;
-    }
+  translate: -3px 0;
+  }
   50% {
-    translate: 3px 0;
-    }
+  translate: 3px 0;
+  }
   75% {
-    translate: -3px 0;
-    }
+  translate: -3px 0;
+  }
   100% {
-    translate: 0 0;
-    }
+  translate: 0 0;
+  }
   }
   @keyframes toast-success-even {
   0% {
-    scale: 1;
-    }
+  scale: 1;
+  }
   30% {
-    scale: 1.025;
-    }
+  scale: 1.025;
+  }
   60% {
-    scale: 0.99;
-    }
+  scale: 0.99;
+  }
   100% {
-    scale: 1;
-    }
+  scale: 1;
+  }
   }
   @keyframes toast-error-even {
   0% {
-    translate: 0 0;
-    }
+  translate: 0 0;
+  }
   25% {
-    translate: -3px 0;
-    }
+  translate: -3px 0;
+  }
   50% {
-    translate: 3px 0;
-    }
+  translate: 3px 0;
+  }
   75% {
-    translate: -3px 0;
-    }
+  translate: -3px 0;
+  }
   100% {
-    translate: 0 0;
-    }
+  translate: 0 0;
+  }
   }
 }
 
@@ -190,23 +191,23 @@
   --success-foreground: var(--color-emerald-400);
   --warning: var(--color-amber-500);
   --warning-foreground: var(--color-amber-400);
-  --accent: --alpha(var(--color-white) / 4%);
+  --accent: --alpha(var(--color-white) / 6%);
   --accent-foreground: var(--color-neutral-100);
-  --background: color-mix(in srgb, var(--color-neutral-950) 95%, var(--color-white));
-  --border: --alpha(var(--color-white) / 6%);
-  --card: color-mix(in srgb, var(--background) 98%, var(--color-white));
+  --background: #09090b;
+  --border: --alpha(var(--color-white) / 8%);
+  --card: #0e0e10;
   --card-foreground: var(--color-neutral-100);
   --destructive: color-mix(in srgb, var(--color-red-500) 90%, var(--color-white));
-  --foreground: var(--color-neutral-100);
-  --input: --alpha(var(--color-white) / 8%);
-  --muted: --alpha(var(--color-white) / 4%);
-  --muted-foreground: color-mix(in srgb, var(--color-neutral-500) 90%, var(--color-white));
-  --popover: color-mix(in srgb, var(--background) 98%, var(--color-white));
+  --foreground: var(--color-neutral-200);
+  --input: --alpha(var(--color-white) / 10%);
+  --muted: --alpha(var(--color-white) / 5%);
+  --muted-foreground: var(--color-neutral-500);
+  --popover: #111113;
   --popover-foreground: var(--color-neutral-100);
   --primary: var(--color-neutral-100);
-  --primary-foreground: var(--color-neutral-800);
-  --ring: var(--color-neutral-500);
-  --secondary: --alpha(var(--color-white) / 4%);
+  --primary-foreground: var(--color-neutral-900);
+  --ring: var(--color-neutral-600);
+  --secondary: --alpha(var(--color-white) / 6%);
   --secondary-foreground: var(--color-neutral-100);
   --chart-1: var(--color-blue-700);
   --chart-2: var(--color-emerald-500);
@@ -216,14 +217,14 @@
   --code: color-mix(in srgb, var(--background) 98%, var(--color-white));
   --code-foreground: var(--foreground);
   --code-highlight: --alpha(var(--color-white) / 4%);
-  --sidebar: color-mix(in srgb, var(--color-neutral-950) 97%, var(--color-white));
-  --sidebar-accent: --alpha(var(--color-white) / 4%);
+  --sidebar: #0c0c0e;
+  --sidebar-accent: --alpha(var(--color-white) / 5%);
   --sidebar-accent-foreground: var(--color-neutral-100);
-  --sidebar-border: --alpha(var(--color-white) / 5%);
+  --sidebar-border: --alpha(var(--color-white) / 6%);
   --sidebar-foreground: color-mix(in srgb, var(--color-neutral-100) 64%, var(--sidebar));
   --sidebar-primary: var(--color-neutral-100);
   --sidebar-primary-foreground: var(--color-neutral-800);
-  --sidebar-ring: var(--color-neutral-400);
+  --sidebar-ring: var(--color-neutral-600);
 }
 
 @layer base {
@@ -237,6 +238,51 @@
     font-family: var(--font-mono);
   }
   html {
-    @apply font-sans font-mono;
+    @apply font-sans;
   }
+}
+
+.prose {
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--color-neutral-100);
+  --tw-prose-links: var(--color-neutral-100);
+  --tw-prose-bold: var(--color-neutral-50);
+  --tw-prose-code: var(--color-neutral-100);
+  --tw-prose-quotes: var(--muted-foreground);
+  --tw-prose-quote-borders: var(--color-neutral-700);
+  --tw-prose-bullets: var(--color-neutral-600);
+  --tw-prose-hr: var(--border);
+  --tw-prose-th: var(--color-neutral-100);
+  --tw-prose-td: var(--muted-foreground);
+  --tw-prose-pre-bg: var(--muted);
+  --tw-prose-pre-code: var(--color-neutral-200);
+}
+
+.prose :where(a) {
+  text-underline-offset: 3px;
+}
+
+.prose :where(h1, h2, h3, h4) {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.prose :where(code)::before,
+.prose :where(code)::after {
+  content: none;
+}
+
+.prose :where(code) {
+  padding: 0.15em 0.4em;
+  border-radius: 0.375rem;
+  background: var(--muted);
+  font-size: 0.875em;
+}
+
+.prose :where(pre) {
+  border: 1px solid var(--border);
+}
+
+html {
+  scrollbar-gutter: stable;
 }
