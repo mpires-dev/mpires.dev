@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
+import { GithubIcon } from "@/components/icons";
 import { reader } from "@/lib/reader";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -124,7 +125,7 @@ export default async function ProjectDetailPage({
                   />
                 }
               >
-                <Github className="size-4" />
+                <GithubIcon className="size-4" />
                 Code
               </Button>
             )}

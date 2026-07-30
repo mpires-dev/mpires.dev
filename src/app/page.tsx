@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, Mail, Linkedin } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
+import { LinkedinIcon } from "@/components/icons";
 import { reader } from "@/lib/reader";
 import { ProjectCard } from "@/components/project-card";
 import { AiFileCard } from "@/components/ai-file-card";
@@ -66,7 +67,7 @@ export default async function Homepage() {
               variant="outline"
               size="lg"
             >
-              <Linkedin className="size-4" />
+              <LinkedinIcon className="size-4" />
               LinkedIn
             </Button>
             <Button render={<Link href="/projects" />} variant="ghost" size="lg">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/icons";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -24,7 +25,7 @@ export function Footer() {
               />
             }
           >
-            <Github className="size-4" />
+            <GithubIcon className="size-4" />
           </Button>
           <Button
             variant="ghost"
@@ -38,7 +39,7 @@ export function Footer() {
               />
             }
           >
-            <Linkedin className="size-4" />
+            <LinkedinIcon className="size-4" />
           </Button>
           <Button
             variant="ghost"
