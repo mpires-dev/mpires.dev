@@ -1,0 +1,55 @@
+---
+title: Blink
+description: >-
+  A React Native app for shared personal finances and household management,
+  built for housemates and couples with smart notifications and a full-stack
+  cloud backend.
+coverImage: /images/projects/blink/coverImage.jpg
+techStack:
+  - React Native
+  - NextJS
+  - Bun
+  - PostgreSQL
+  - Redis
+  - AWS
+  - Stripe
+date: 2025-01-01
+---
+# Blink: shared finances and household life, simplified
+
+Blink is a mobile-first application built for housemates and couples who want a single, organized place to manage their shared life. From splitting bills and tracking group expenses to assigning recurring chores and staying on top of household tasks, Blink brings financial clarity and operational rhythm to everyday domestic life.
+
+The product was built around a core insight: most finance and task apps are designed for individuals. Blink is designed for relationships — whether that is two people sharing a flat or a household of four splitting rent, groceries, and responsibilities.
+
+## What Blink solves
+
+Shared living creates financial and organizational friction that generic tools fail to address. Who paid the internet bill last month? Who owes who for the grocery run? Whose turn is it to clean the bathroom? Blink answers all of these questions in one place, with context and without manual tracking.
+
+The key product pillars are:
+
+- **Joint finances**: track shared and individual expenses, split costs fairly, and settle balances with clear history and transparency.
+- **Household task management**: assign recurring chores and one-off tasks with ownership, deadlines, and accountability.
+- **Group and personal budgets**: manage both individual goals and collective spending limits in a unified view.
+- **Smart notifications**: context-aware alerts for due tasks, unsettled balances, upcoming bills, and budget thresholds — delivered at the right moment, not all at once.
+
+## Architecture and stack
+
+Blink was designed for performance, reliability, and a smooth developer experience across platforms. The mobile app was built in **React Native**, enabling a native feel on both iOS and Android from a single codebase. A companion **Next.js** web interface handles account management, onboarding flows, and shared dashboard access from the browser.
+
+The backend runs on **Bun** with a **PostgreSQL** database for relational data integrity across users, households, expenses, and tasks. **Redis** handles session caching, real-time event queuing, and notification delivery coordination, keeping the system responsive under concurrent activity.
+
+For transactional email and system communications, the stack integrates **AWS SES with React Email**, allowing the use of React components to build and maintain rich email templates without leaving the TypeScript ecosystem.
+
+Payment flows are handled through **Stripe**, covering subscription billing, in-app purchases, and future potential for peer-to-peer settlement features. The entire backend is deployed on **AWS**, with infrastructure designed for elasticity, observability, and safe continuous deployment.
+
+## Smart notifications as a product differentiator
+
+One of the most carefully designed features in Blink is its notification system. Rather than bombarding users with alerts, Blink uses behavioral context and scheduling logic to deliver notifications that are genuinely useful: a reminder that a shared bill is due tomorrow, an alert that a balance has been sitting unsettled for a week, or a nudge that a recurring task has not been completed yet.
+
+This required building a notification engine that understands the user's household context, not just a static trigger schedule. Redis queues and worker processes handle the orchestration, ensuring reliability without overloading the user experience.
+
+## Designing for trust in shared environments
+
+Beyond the technical stack, Blink required careful product thinking around privacy and trust. In a shared household, financial data is sensitive. Blink was built with clear permission boundaries between household members, transparent expense history, and explicit consent flows for shared access — ensuring that transparency between users never crosses into unwanted exposure.
+
+Blink is not just a finance tracker. It is an infrastructure layer for people who live together and want their shared life to run more smoothly.

@@ -1,0 +1,67 @@
+---
+title: Lintsy
+description: >-
+  A privacy-first desktop AI companion for pull request review, built with Rust
+  and TypeScript using Tauri, running 100% locally with your LLM of choice.
+coverImage: /images/projects/lintsy/coverImage.webp
+techStack:
+  - Rust
+  - TypeScript
+  - Tauri
+  - SQLite
+date: 2025-06-01
+---
+# Lintsy: your local AI companion for pull request review
+
+Lintsy is a desktop application built for engineers who take code review seriously. It combines AI-powered pull request analysis with a personal tracking system to help developers stay on top of the reviews they have been assigned — without relying on cloud services, external APIs, or sharing their code with third-party systems.
+
+Built with **Rust** and **TypeScript** using **Tauri**, Lintsy runs natively on the desktop with a small footprint, fast startup time, and zero network dependencies for its core functionality. Privacy is not a feature added on top — it is the architectural foundation.
+
+## The problem Lintsy solves
+
+Pull request review is one of the highest-leverage activities in software engineering. It is also one of the most poorly supported. Developers accumulate review assignments across multiple repositories, lose track of which PRs they have already reviewed, and spend more time navigating GitHub than actually thinking about the code.
+
+On top of that, AI code review tools on the market typically send your code to remote servers, require cloud subscriptions, and offer generic suggestions that lack strategic depth.
+
+Lintsy addresses both problems at once: a persistent, organized companion that tracks your review workload, and an AI assistant that helps you review code thoughtfully — all running locally on your machine.
+
+## AI-assisted review, on your terms
+
+At the core of Lintsy is an AI review engine that analyzes pull requests and surfaces strategic review suggestions. Rather than flagging syntax issues or stylistic nits, Lintsy focuses on what matters most in code review: logic correctness, architectural implications, edge cases, security considerations, and test coverage gaps.
+
+The AI assistant is designed to help the reviewer think more clearly, not to replace their judgment. It suggests angles to investigate, highlights suspicious patterns, and drafts review comments that the developer can refine and publish.
+
+Crucially, **the LLM runs entirely on the user's machine**. Lintsy is designed to work with any locally hosted language model — Ollama, LM Studio, or any OpenAI-compatible API endpoint the user configures. No code leaves the machine. No API keys are required by default. The user chooses their model based on their hardware, preferences, and performance needs.
+
+## Review tracking as a first-class feature
+
+Beyond the AI layer, Lintsy solves a simpler but equally painful problem: knowing which PRs you have been asked to review and have not yet reviewed.
+
+Lintsy maintains a local database of your pending review assignments, tracking:
+
+- PRs where you were requested as a reviewer but have not yet submitted a review;
+- PRs you have reviewed but where new commits have been pushed since your last look;
+- PRs you have dismissed or deferred with notes for later follow-up.
+
+This tracker is powered by **SQLite**, stored entirely on the user's disk. There is no cloud sync, no account required, and no dependency on external infrastructure. The state is yours, persistent, and private.
+
+## Architecture: Rust, TypeScript, and Tauri
+
+Building a native desktop application with AI capabilities required a stack that could balance performance, cross-platform support, and developer ergonomics. **Tauri** was the clear choice: a framework that combines a **Rust** backend for systems-level performance with a **TypeScript** frontend for flexible, component-driven UI development.
+
+The Rust core handles:
+
+- local database access via SQLite;
+- GitHub API integration for fetching PR data, diffs, and review state;
+- LLM communication and prompt orchestration;
+- file system operations and application lifecycle management.
+
+The TypeScript frontend, running in the Tauri webview, handles the user interface, review workflow, and interaction design — built with a focus on developer ergonomics and keyboard-driven navigation.
+
+## Privacy as architecture
+
+Most AI tools in the developer space treat privacy as a toggle. In Lintsy, privacy is the constraint that shaped every technical decision. No telemetry. No cloud sync. No required accounts. No code leaves the machine unless the user explicitly configures an external LLM endpoint.
+
+This makes Lintsy viable for engineers working in regulated industries, security-sensitive environments, or simply those who prefer to keep their work private. The product does not ask for trust — it is built to not require it.
+
+Lintsy is for developers who believe that good code review is a craft, and that the tools supporting it should be fast, local, and entirely under their control.
