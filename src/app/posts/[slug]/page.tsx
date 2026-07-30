@@ -12,13 +12,15 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = await reader.collections.posts.read(slug);
+  const post = await reader.collections.posts.read(slug, {
+    resolveLinkedFiles: true,
+  });
 
   if (!post) return {};
 
   return {
-    title: post.entry.title,
-    description: post.entry.description || undefined,
+    title: post.title,
+    description: post.description || undefined,
   };
 }
 
@@ -33,13 +35,15 @@ export default async function PostDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = await reader.collections.posts.read(slug);
+  const post = await reader.collections.posts.read(slug, {
+    resolveLinkedFiles: true,
+  });
 
   if (!post) {
     notFound();
   }
 
-  const { node } = await post.entry.content.render();
+  const { node } = await post.content.render();
 
   return (
     <ScrollArea scrollFade className="h-svh">
@@ -55,12 +59,12 @@ export default async function PostDetailPage({
         </Button>
 
         <h1 className="mb-3 font-heading text-4xl font-bold tracking-tight">
-          {post.entry.title}
+          {post.title}
         </h1>
 
-        {post.entry.publishDate && (
+        {post.publishDate && (
           <time className="mb-8 block font-mono text-sm text-muted-foreground">
-            {new Date(post.entry.publishDate).toLocaleDateString("en-US", {
+            {new Date(post.publishDate).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
               day: "numeric",

@@ -15,19 +15,19 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = await reader.collections.projects.read(slug);
+  const project = await reader.collections.projects.read(slug, {
+    resolveLinkedFiles: true,
+  });
 
   if (!project) return {};
 
   return {
-    title: project.entry.title,
-    description: project.entry.description || undefined,
+    title: project.title,
+    description: project.description || undefined,
     openGraph: {
-      title: project.entry.title,
-      description: project.entry.description || undefined,
-      images: project.entry.coverImage
-        ? [{ url: project.entry.coverImage }]
-        : undefined,
+      title: project.title,
+      description: project.description || undefined,
+      images: project.coverImage ? [{ url: project.coverImage }] : undefined,
     },
   };
 }
@@ -43,13 +43,15 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = await reader.collections.projects.read(slug);
+  const project = await reader.collections.projects.read(slug, {
+    resolveLinkedFiles: true,
+  });
 
   if (!project) {
     notFound();
   }
 
-  const { node } = await project.entry.content.render();
+  const { node } = await project.content.render();
 
   return (
     <ScrollArea scrollFade className="h-svh">
@@ -64,11 +66,11 @@ export default async function ProjectDetailPage({
           Back to projects
         </Button>
 
-        {project.entry.coverImage && (
+        {project.coverImage && (
           <div className="relative mb-8 aspect-video overflow-hidden rounded-2xl border border-border">
             <Image
-              src={project.entry.coverImage}
-              alt={project.entry.title}
+              src={project.coverImage}
+              alt={project.title}
               fill
               sizes="(max-width: 768px) 100vw, 768px"
               className="object-cover"
@@ -77,19 +79,19 @@ export default async function ProjectDetailPage({
         )}
 
         <h1 className="mb-3 font-heading text-4xl font-bold tracking-tight">
-          {project.entry.title}
+          {project.title}
         </h1>
 
-        {project.entry.description && (
+        {project.description && (
           <p className="mb-6 text-lg text-muted-foreground">
-            {project.entry.description}
+            {project.description}
           </p>
         )}
 
         <div className="mb-8 flex flex-wrap items-center gap-3">
-          {project.entry.techStack && project.entry.techStack.length > 0 && (
+          {project.techStack && project.techStack.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
-              {project.entry.techStack.map((tech) => (
+              {project.techStack.map((tech) => (
                 <Badge key={tech} variant="secondary">
                   {tech}
                 </Badge>
@@ -97,13 +99,13 @@ export default async function ProjectDetailPage({
             </div>
           )}
           <div className="flex gap-2">
-            {project.entry.link && (
+            {project.link && (
               <Button
                 variant="outline"
                 size="sm"
                 render={
                   <Link
-                    href={project.entry.link}
+                    href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   />
@@ -113,13 +115,13 @@ export default async function ProjectDetailPage({
                 Live
               </Button>
             )}
-            {project.entry.github && (
+            {project.github && (
               <Button
                 variant="outline"
                 size="sm"
                 render={
                   <Link
-                    href={project.entry.github}
+                    href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
                   />
