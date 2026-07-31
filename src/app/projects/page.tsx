@@ -44,7 +44,6 @@ export default async function ProjectsPage() {
             <p className="text-muted-foreground">No projects published yet.</p>
           </div>
         )}
-      </div>
     </div>
   );
 }

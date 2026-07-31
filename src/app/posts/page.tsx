@@ -61,7 +61,6 @@ export default async function PostsPage() {
             <p className="text-muted-foreground">No posts published yet.</p>
           </div>
         )}
-      </div>
     </div>
   );
 }

@@ -41,7 +41,6 @@ export default async function AiFilesPage() {
             </p>
           </div>
         )}
-      </div>
     </div>
   );
 }
