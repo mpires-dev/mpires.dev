@@ -333,12 +333,10 @@ export default function Dither({
 }: DitherProps) {
   return (
     <Canvas
-      className="w-full h-full"
-      style={{ width: "100%", height: "100%", display: "block" }}
+      className="w-full h-full relative"
       camera={{ position: [0, 0, 6] }}
       dpr={1}
-      frameloop="always"
-      gl={{ antialias: true, alpha: false }}
+      gl={{ antialias: true }}
     >
       <DitheredWaves
         waveSpeed={waveSpeed}

@@ -5,6 +5,7 @@ import "@hackernoon/pixel-icon-library/fonts/iconfont.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { DitherBackground } from "@/components/dither-background";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -64,9 +65,21 @@ export default function RootLayout({
     >
       <body className="h-svh overflow-hidden font-sans antialiased">
         <div className="relative h-svh">
-          {/* ScrollArea fills entire viewport */}
-          <ScrollArea scrollFade className="h-svh">
-            {/* Navbar is sticky INSIDE the scroll content so backdrop-blur works */}
+          {/* Dither background — outside ScrollArea so WebGL works properly */}
+          <div className="pointer-events-none absolute inset-0 z-0 opacity-25">
+            <DitherBackground
+              waveColor={[0.5, 0.5, 0.5]}
+              disableAnimation={false}
+              enableMouseInteraction={false}
+              colorNum={10}
+              waveAmplitude={0.3}
+              waveFrequency={2.7}
+              waveSpeed={0.04}
+            />
+          </div>
+
+          {/* ScrollArea on top with transparent bg */}
+          <ScrollArea scrollFade className="relative z-10 h-svh">
             <Navbar />
             {children}
             <Footer />

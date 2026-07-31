@@ -4,7 +4,6 @@ import { PixelIcon } from "@/components/pixel-icon";
 import { ProjectCard } from "@/components/project-card";
 import { AiFileCard } from "@/components/ai-file-card";
 import { CareerTimeline } from "@/components/career-timeline";
-import { DitherBackground } from "@/components/dither-background";
 import { Button } from "@/components/ui/button";
 
 export default async function Homepage() {
@@ -22,22 +21,6 @@ export default async function Homepage() {
 
   return (
     <div className="relative">
-      {/* Dither background — absolute so it scrolls with content */}
-      <div
-        className="pointer-events-none absolute left-0 top-0 z-0 h-[700px] w-full opacity-30"
-        style={{ contain: "layout" }}
-      >
-        <DitherBackground
-          waveColor={[0.5, 0.5, 0.5]}
-          disableAnimation={false}
-          enableMouseInteraction={false}
-          colorNum={10}
-          waveAmplitude={0.3}
-          waveFrequency={2.7}
-          waveSpeed={0.04}
-        />
-      </div>
-
       <div className="relative z-10 mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 lg:px-8">
         {/* Hero */}
         <section className="relative flex min-h-[500px] max-w-3xl flex-col justify-center gap-4">
