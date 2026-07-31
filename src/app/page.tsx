@@ -23,7 +23,10 @@ export default async function Homepage() {
   return (
     <div className="relative">
       {/* Dither background — absolute so it scrolls with content */}
-      <div className="pointer-events-none absolute left-0 top-0 z-0 h-[700px] w-full overflow-hidden opacity-30">
+      <div
+        className="pointer-events-none absolute left-0 top-0 z-0 h-[700px] w-full opacity-30"
+        style={{ contain: "layout" }}
+      >
         <DitherBackground
           waveColor={[0.5, 0.5, 0.5]}
           disableAnimation={false}
