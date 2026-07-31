@@ -66,7 +66,9 @@ export default function RootLayout({
       <body className="h-svh overflow-hidden font-sans antialiased">
         <div className="relative h-svh">
           {/* Dither background — outside ScrollArea so WebGL works properly */}
-          <div className="pointer-events-none absolute inset-0 z-0 opacity-25">
+          <div
+            className="pointer-events-none absolute inset-0 z-0 opacity-30"
+          >
             <DitherBackground
               waveColor={[0.5, 0.5, 0.5]}
               disableAnimation={false}
