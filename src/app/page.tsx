@@ -22,8 +22,8 @@ export default async function Homepage() {
 
   return (
     <div className="relative">
-      {/* Dither background — fixed to viewport so it stays during scroll */}
-      <div className="pointer-events-none fixed inset-0 z-0 h-[600px] opacity-30">
+      {/* Dither background — absolute so it scrolls with content */}
+      <div className="pointer-events-none absolute left-0 top-0 z-0 h-[700px] w-full overflow-hidden opacity-30">
         <DitherBackground
           waveColor={[0.5, 0.5, 0.5]}
           disableAnimation={false}

@@ -63,14 +63,14 @@ export default function RootLayout({
       className={`dark relative h-svh ${inter.variable} ${interHeading.variable} ${geistMono.variable}`}
     >
       <body className="h-svh overflow-hidden font-sans antialiased">
-        <div className="isolate flex h-svh flex-col">
-          <Navbar />
-          <main className="min-h-0 flex-1">
-            <ScrollArea scrollFade className="h-full">
-              {children}
-              <Footer />
-            </ScrollArea>
-          </main>
+        <div className="relative h-svh">
+          {/* ScrollArea fills entire viewport */}
+          <ScrollArea scrollFade className="h-svh">
+            {/* Navbar is sticky INSIDE the scroll content so backdrop-blur works */}
+            <Navbar />
+            {children}
+            <Footer />
+          </ScrollArea>
         </div>
       </body>
     </html>
