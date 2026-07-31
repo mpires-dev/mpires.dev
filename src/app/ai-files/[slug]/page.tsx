@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { reader } from "@/lib/reader";
+import { renderMarkdocNode } from "@/lib/markdoc";
 import { PixelIcon } from "@/components/pixel-icon";
 import { Button } from "@/components/ui/button";
 import { InstallCommandCopy } from "@/components/install-command-copy";
@@ -49,7 +50,7 @@ export default async function AiFileDetailPage({
     notFound();
   }
 
-  const { node } = await aiFile.content.render();
+  const content = renderMarkdocNode(aiFile.content.node);
 
   return (
     <div className="mx-auto max-w-3xl px-4 pb-20 pt-20 sm:px-6 lg:px-8">
@@ -107,7 +108,7 @@ export default async function AiFileDetailPage({
         )}
       </div>
 
-      <div className="prose prose-neutral max-w-none">{node}</div>
+      <div className="prose prose-neutral max-w-none">{content}</div>
     </div>
   );
 }

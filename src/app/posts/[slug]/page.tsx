@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { reader } from "@/lib/reader";
+import { renderMarkdocNode } from "@/lib/markdoc";
 import { PixelIcon } from "@/components/pixel-icon";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -43,7 +44,7 @@ export default async function PostDetailPage({
     notFound();
   }
 
-  const { node } = await post.content.render();
+  const content = renderMarkdocNode(post.content.node);
 
   return (
     <ScrollArea scrollFade className="h-svh">
@@ -72,7 +73,7 @@ export default async function PostDetailPage({
           </time>
         )}
 
-        <div className="prose prose-neutral max-w-none">{node}</div>
+        <div className="prose prose-neutral max-w-none">{content}</div>
       </div>
     </ScrollArea>
   );
