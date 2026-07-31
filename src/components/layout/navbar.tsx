@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -12,6 +11,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { PixelIcon } from "@/components/pixel-icon";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -89,7 +89,7 @@ export function Navbar() {
                 <Button variant="ghost" size="icon" aria-label="Open menu" />
               }
             >
-              <Menu className="size-5" />
+              <PixelIcon name="bars" />
             </SheetTrigger>
             <SheetContent side="right" className="w-72 p-0">
               <ScrollArea scrollFade className="h-full">
@@ -104,7 +104,7 @@ export function Navbar() {
                       />
                     }
                   >
-                    <X className="size-5" />
+                    <PixelIcon name="times" />
                   </SheetClose>
                 </div>
                 <nav className="flex flex-col gap-1 p-4">

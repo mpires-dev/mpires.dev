@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { reader } from "@/lib/reader";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { ArrowRight } from "lucide-react";
+import { PixelIcon } from "@/components/pixel-icon";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -19,8 +18,7 @@ export default async function PostsPage() {
   });
 
   return (
-    <ScrollArea scrollFade className="h-svh">
-      <div className="mx-auto max-w-3xl px-4 pb-20 pt-20 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-3xl px-4 pb-20 pt-20 sm:px-6 lg:px-8">
         <h1 className="mb-2 font-heading text-4xl font-bold tracking-tight">
           Blog
         </h1>
@@ -54,7 +52,7 @@ export default async function PostsPage() {
                     </time>
                   )}
                 </div>
-                <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" />
+                <PixelIcon name="arrow-right" className="shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" />
               </Link>
             ))}
           </div>
@@ -64,6 +62,6 @@ export default async function PostsPage() {
           </div>
         )}
       </div>
-    </ScrollArea>
+    </div>
   );
 }

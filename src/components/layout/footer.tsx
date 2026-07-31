@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/icons";
+import { PixelIcon } from "@/components/pixel-icon";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -25,7 +24,7 @@ export function Footer() {
               />
             }
           >
-            <GithubIcon className="size-4" />
+            <PixelIcon name="github" />
           </Button>
           <Button
             variant="ghost"
@@ -39,7 +38,7 @@ export function Footer() {
               />
             }
           >
-            <LinkedinIcon className="size-4" />
+            <PixelIcon name="linkedin" />
           </Button>
           <Button
             variant="ghost"
@@ -48,7 +47,7 @@ export function Footer() {
               <Link href="mailto:matheuspires.dev@gmail.com" aria-label="Email" />
             }
           >
-            <Mail className="size-4" />
+            <PixelIcon name="envelope" />
           </Button>
         </div>
       </div>

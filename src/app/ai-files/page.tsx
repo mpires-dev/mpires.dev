@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { reader } from "@/lib/reader";
 import { AiFileCard } from "@/components/ai-file-card";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const metadata: Metadata = {
   title: "AI Files",
@@ -12,8 +11,7 @@ export default async function AiFilesPage() {
   const aiFiles = await reader.collections.aiFiles.all();
 
   return (
-    <ScrollArea scrollFade className="h-svh">
-      <div className="mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 lg:px-8">
         <h1 className="mb-2 font-heading text-4xl font-bold tracking-tight">
           AI Files
         </h1>
@@ -44,6 +42,6 @@ export default async function AiFilesPage() {
           </div>
         )}
       </div>
-    </ScrollArea>
+    </div>
   );
 }

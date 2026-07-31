@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PixelIcon } from "@/components/pixel-icon";
 
 export function InstallCommandCopy({ command }: { command: string }) {
   const [copied, setCopied] = useState(false);
@@ -29,9 +29,9 @@ export function InstallCommandCopy({ command }: { command: string }) {
         aria-label="Copy install command"
       >
         {copied ? (
-          <Check className="size-3 text-success" />
+          <PixelIcon name="check" className="text-success" />
         ) : (
-          <Copy className="size-3" />
+          <PixelIcon name="copy" />
         )}
       </Button>
     </div>

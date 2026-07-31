@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "@hackernoon/pixel-icon-library/fonts/iconfont.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -59,13 +60,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark relative h-full ${inter.variable} ${interHeading.variable} ${geistMono.variable}`}
+      className={`dark relative h-svh ${inter.variable} ${interHeading.variable} ${geistMono.variable}`}
     >
-      <body className="min-h-full font-sans antialiased">
-        <div className="isolate relative flex min-h-svh flex-col">
+      <body className="h-svh overflow-hidden font-sans antialiased">
+        <div className="isolate flex h-svh flex-col">
           <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <main className="min-h-0 flex-1">
+            <ScrollArea scrollFade className="h-full">
+              {children}
+              <Footer />
+            </ScrollArea>
+          </main>
         </div>
       </body>
     </html>

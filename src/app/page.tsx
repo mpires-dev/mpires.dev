@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, Mail } from "lucide-react";
-import { LinkedinIcon } from "@/components/icons";
 import { reader } from "@/lib/reader";
+import { PixelIcon } from "@/components/pixel-icon";
 import { ProjectCard } from "@/components/project-card";
 import { AiFileCard } from "@/components/ai-file-card";
 import { CareerTimeline } from "@/components/career-timeline";
 import { DitherBackground } from "@/components/dither-background";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default async function Homepage() {
   const projects = await reader.collections.projects.all();
@@ -23,8 +21,9 @@ export default async function Homepage() {
     .slice(0, 4);
 
   return (
-    <ScrollArea scrollFade className="h-svh">
-      <div className="pointer-events-none absolute left-0 top-0 h-[700px] w-full opacity-40">
+    <div className="relative">
+      {/* Dither background — fixed to viewport so it stays during scroll */}
+      <div className="pointer-events-none fixed inset-0 z-0 h-[600px] opacity-30">
         <DitherBackground
           waveColor={[0.5, 0.5, 0.5]}
           disableAnimation={false}
@@ -36,24 +35,24 @@ export default async function Homepage() {
         />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 lg:px-8">
         {/* Hero */}
         <section className="relative flex min-h-[500px] max-w-3xl flex-col justify-center gap-4">
-          <h1 className="relative z-20 text-3xl font-medium leading-[1.05] tracking-tight md:text-5xl">
+          <h1 className="text-3xl font-medium leading-[1.05] tracking-tight md:text-5xl">
             Hi, I&apos;m Matheus Pires — a Fullstack Developer focused on
             high-growth digital products.
           </h1>
-          <p className="relative z-20 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
             I specialize in the TypeScript ecosystem and AI product execution.
             I partner with teams to ship faster, scale smarter, and build
             experiences that directly impact revenue.
           </p>
-          <div className="relative z-20 flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3">
             <Button
               render={<Link href="mailto:matheuspires.dev@gmail.com" />}
               size="lg"
             >
-              <Mail className="size-4" />
+              <PixelIcon name="envelope" />
               Email
             </Button>
             <Button
@@ -67,12 +66,12 @@ export default async function Homepage() {
               variant="outline"
               size="lg"
             >
-              <LinkedinIcon className="size-4" />
+              <PixelIcon name="linkedin" />
               LinkedIn
             </Button>
             <Button render={<Link href="/projects" />} variant="ghost" size="lg">
               Projects
-              <ArrowRight className="size-4" />
+              <PixelIcon name="arrow-right" />
             </Button>
           </div>
         </section>
@@ -89,7 +88,7 @@ export default async function Homepage() {
               render={<Link href="/projects" />}
               className="hidden items-center gap-2 md:flex"
             >
-              View all projects <ArrowRight className="size-4" />
+              View all projects <PixelIcon name="arrow-right" />
             </Button>
           </div>
 
@@ -126,7 +125,7 @@ export default async function Homepage() {
               render={<Link href="/projects" />}
               className="inline-flex items-center gap-2"
             >
-              View all <ArrowRight className="size-4" />
+              View all <PixelIcon name="arrow-right" />
             </Button>
           </div>
         </section>
@@ -148,7 +147,7 @@ export default async function Homepage() {
               render={<Link href="/ai-files" />}
               className="hidden shrink-0 items-center gap-2 md:flex"
             >
-              View all <ArrowRight className="size-4" />
+              View all <PixelIcon name="arrow-right" />
             </Button>
           </div>
 
@@ -188,7 +187,7 @@ export default async function Homepage() {
               render={<Link href="/ai-files" />}
               className="inline-flex items-center gap-2"
             >
-              View all <ArrowRight className="size-4" />
+              View all <PixelIcon name="arrow-right" />
             </Button>
           </div>
         </section>
@@ -198,6 +197,6 @@ export default async function Homepage() {
           <CareerTimeline />
         </section>
       </div>
-    </ScrollArea>
+    </div>
   );
 }

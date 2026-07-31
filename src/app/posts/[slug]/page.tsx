@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
 import { reader } from "@/lib/reader";
+import { PixelIcon } from "@/components/pixel-icon";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -54,7 +54,7 @@ export default async function PostDetailPage({
           render={<Link href="/posts" />}
           className="mb-8"
         >
-          <ArrowLeft className="size-4" />
+          <PixelIcon name="arrow-left" />
           Back to blog
         </Button>
 

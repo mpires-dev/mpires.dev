@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { reader } from "@/lib/reader";
 import { ProjectCard } from "@/components/project-card";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -18,8 +17,7 @@ export default async function ProjectsPage() {
   });
 
   return (
-    <ScrollArea scrollFade className="h-svh">
-      <div className="mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 lg:px-8">
         <h1 className="mb-2 font-heading text-4xl font-bold tracking-tight">
           Projects
         </h1>
@@ -47,6 +45,6 @@ export default async function ProjectsPage() {
           </div>
         )}
       </div>
-    </ScrollArea>
+    </div>
   );
 }

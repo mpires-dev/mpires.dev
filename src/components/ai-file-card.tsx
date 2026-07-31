@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { PixelIcon } from "@/components/pixel-icon";
 
 interface AiFileCardProps {
   name: string;
@@ -54,7 +54,7 @@ export function AiFileCard({
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-muted">
-            <span className="text-5xl">🤖</span>
+            <PixelIcon name="code" className="text-5xl opacity-50" />
           </div>
         )}
       </div>
@@ -73,7 +73,7 @@ export function AiFileCard({
               }}
               className="shrink-0 cursor-pointer"
             >
-              <ExternalLink className="size-3.5 text-muted-foreground transition-colors hover:text-foreground" />
+              <PixelIcon name="external-link" className="text-muted-foreground transition-colors hover:text-foreground" />
             </span>
           )}
         </div>
@@ -95,9 +95,9 @@ export function AiFileCard({
               aria-label="Copy install command"
             >
               {copied ? (
-                <Check className="size-3 text-success" />
+                <PixelIcon name="check" className="text-success" />
               ) : (
-                <Copy className="size-3" />
+                <PixelIcon name="copy" />
               )}
             </Button>
           </div>
